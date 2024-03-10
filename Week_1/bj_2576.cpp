@@ -1,5 +1,6 @@
 #include<iostream>
 #include<algorithm>
+#include<vector>
 
 using namespace std;
 
@@ -8,24 +9,27 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    int arr[7], sum=0, oddNum = 0, min = 9999;
+    vector<int> v;
+    int sum=0, min = 9999, oddNum = 0;
 
     for(int i=0; i<7; i++)
     {
-        cin >> arr[i];
-        if(arr[i] % 2 != 0)
+        int n;
+        cin >> n;
+        if((n % 2) != 0)
         {
             oddNum += 1;
-            sum += arr[i];
-
-            if(arr[i] < min)
-                min = arr[i];
+            v.push_back(n);
+            sum += n;
         }
     }
-    sort(arr, arr+7);
-    if(oddNum) 
-        cout << sum << '\n' << arr[0];
-    else
+    sort(v.begin(), v.end());
+    if(oddNum == 0) 
         cout << "-1";
+    else
+        cout << sum << '\n' << v[0];
     return 0;
 }
+
+//풀이
+//https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook/0x02.md
